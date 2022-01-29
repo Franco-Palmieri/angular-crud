@@ -1,0 +1,30 @@
+<nav>
+    <div class="row nav-container">
+        <div class="right-nav"></div>
+        <div class="left-nav">
+            <button (click)="modalStatus()">Add</button>
+        </div>
+    </div>
+</nav>
+<div *ngIf="status">
+    <div class="modal">
+        <form [formGroup]="formValue">
+            <input type="text" placeholder="titolo" formControlName="title">
+            <input type="text" placeholder="corpo" formControlName="body">
+    
+            <button type="submit"(click)="postPostDetail()">Add</button>
+            <button (click)="updatePost()">Update</button>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row nav-container" *ngFor="let post of postData">
+        <h2>{{post.title}}</h2>
+        <div class="box-buttons">
+            <button style="margin-right: 10px;" (click)="onEdit(post)">Edit</button>
+            <button (click)="deletePost(post)">Delete</button>
+            
+        </div>
+    </div>
+</div>
