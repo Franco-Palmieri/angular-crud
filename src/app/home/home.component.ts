@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms'
 import { windowCount } from 'rxjs';
 import { PostModel } from '../post-model.model';
 import { CrudService } from '../services/crud.service';
+import { ActivatedRoute, Router } from '@angular/router'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   postObj : PostModel = new PostModel();
   status: boolean = false
 
-  constructor(public formBuilder: FormBuilder, public crud: CrudService){ 
+  constructor(public formBuilder: FormBuilder, public crud: CrudService, public route: ActivatedRoute, public router: Router){ 
 
   }
 
@@ -67,5 +68,9 @@ export class HomeComponent implements OnInit {
 
     this.crud.putPost(this.postObj, this.postObj.id)
     window.location.reload()
+  }
+
+  openPost(postId : number){
+    this.router.navigate(['singlepost/' + postId])
   }
 }

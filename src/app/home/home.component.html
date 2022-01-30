@@ -19,12 +19,13 @@
 </div>
 
 <div class="container">
-    <div class="row nav-container" *ngFor="let post of postData">
-        <h2>{{post.title}}</h2>
-        <div class="box-buttons">
-            <button style="margin-right: 10px;" (click)="onEdit(post)">Edit</button>
-            <button (click)="deletePost(post)">Delete</button>
-            
+    <div class="row" *ngFor="let post of postData" style="border: 1px solid red; margin: 10px 0; cursor: pointer;" >
+        <div class="row nav-container" (click)="openPost(post.id)">
+            <h2>{{post.title}}</h2>
+            <div class="box-buttons">
+                <button style="margin-right: 10px;" (click)="onEdit(post)">Edit</button>
+                <button (click)="deletePost(post)">Delete</button>            
+            </div>
         </div>
     </div>
 </div>
